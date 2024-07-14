@@ -31,3 +31,17 @@ jobs:
             junit/test-results.xml
             htmlcov
         if: ${{ always() }}
+  Build-and-Push-Images:
+    runs-on: ubuntu-latest
+    needs: Testing-Phase  
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build and push Docker images
+        env:
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+        run: |
+          docker-compose -f infra/docker-compose.yml build
+          echo "${DOCKER_HUB_PASSWORD}" | docker login -u "${DOCKER_HUB_USERNAME}" --password-stdin
+          docker-compose -f infra/docker-compose.yml push
