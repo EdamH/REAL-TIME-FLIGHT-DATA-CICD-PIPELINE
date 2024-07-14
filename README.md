@@ -47,7 +47,7 @@ Our project pipeline is as follows:
 **GitHub Actions:** Automate workflows and development tasks on GitHub.
 **Azure:** To host the data pipeline
 
-![Application Architecture](./img/architecture.png)
+![Application Architecture](./img/Architecture.png)
 
 ## Folder structure
 
