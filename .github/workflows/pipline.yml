@@ -1,5 +1,5 @@
-name: CI Pipeline
-run-name: ${{ github.actor }} is executing the CI pipeline for the real-time-flight-analysis-application 🚀
+name: CI/CD Pipeline
+run-name: ${{ github.actor }} is executing the CI/CD pipeline for the real-time-flight-analysis-application 🚀
 on: [push]
 jobs:
   Testing-Phase:
