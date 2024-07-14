@@ -33,7 +33,8 @@ def test_testing_module(producer, temp_json_file):
         with patch('builtins.open', mock_open(read_data=temp_json_file)):
             # Patch time.sleep to speed up the test
             with patch('time.sleep', return_value=None):
-                testing_module(producer, '')
+                testing_module(producer, temp_json_file)
+                print('done')
 
     # Check that the producer's send method was called the correct number of times
     assert producer.send.call_count == 3

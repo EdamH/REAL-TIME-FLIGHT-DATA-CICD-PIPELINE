@@ -21,12 +21,12 @@ jobs:
       - name: Lint with Ruff
         run: |
           pip install ruff
-          ruff --output-format=github .
+          ruff check --output-format=github .
         continue-on-error: true
       - name: Upload pytest test results
         uses: actions/upload-artifact@v4
         with:
           name: pytest-results
-          path: junit/test-results-.xml
+          path: junit/test-results.xml
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}

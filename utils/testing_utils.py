@@ -6,7 +6,6 @@ import os
 
 def testing_module(producer, filename='dummy_data.json'):
     file_path = f'utils/{filename}'
-
     # Check if file exists
     if not os.path.exists(file_path):
         print(f"JSON file '{filename}' does not exist. Please create it using: python kafka_stream.py export --filename {filename}")
