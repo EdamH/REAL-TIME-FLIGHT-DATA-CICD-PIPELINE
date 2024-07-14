@@ -56,7 +56,7 @@ def get_data(endpoint, **params):
     full_url = f"{api_url}{endpoint}?api_key={api_key}{query_string}"
     # Send the request
     res = requests.get(full_url)
-    res = res.json()["response"] if not("_view" in params.keys()) else res.json()
+    res = res.json()["response"] if ("_view" not in params.keys()) else res.json()
     
     return res
 

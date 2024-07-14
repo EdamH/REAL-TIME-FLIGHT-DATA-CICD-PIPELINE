@@ -9,7 +9,7 @@ def testing_module(producer, filename='dummy_data.json'):
 
     # Check if file exists
     if not os.path.exists(file_path):
-        print(f"JSON file '{filename}' does not exist. Please create it using export_data_to_json(endpoint, fields, filename='{filename}')")
+        print(f"JSON file '{filename}' does not exist. Please create it using: python kafka_stream.py export --filename {filename}")
         return
 
     with open(file_path, 'r') as file:

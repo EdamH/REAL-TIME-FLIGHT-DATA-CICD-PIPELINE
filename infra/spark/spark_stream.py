@@ -1,8 +1,7 @@
 # IMPORT LIBRARIES
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import *
 from pyspark.conf import SparkConf
-from pyspark.sql.types import *
+from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType  # Add all specific types you need
 from pyspark.sql.functions import from_json , col , when , length
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType

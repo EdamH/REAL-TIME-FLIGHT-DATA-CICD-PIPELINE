@@ -1,6 +1,6 @@
 import argparse
 from utils.testing_utils import testing_module
-from utils.kafka_utils import stream_data, _fields, api_endpoint, producer
+from utils.kafka_utils import stream_data, _fields, api_endpoint, create_producer
 from utils.api_utils import export_data_to_json
 
 if __name__ == "__main__":
@@ -17,9 +17,9 @@ if __name__ == "__main__":
     - --filename (optional): Specify the filename for export or testing modes (defaults to 'dummy_data.json').
 
     Example Usage:
-    - Stream data: python main_script.py stream
-    - Export data to a custom filename: python main_script.py export --filename custom_data.json
-    - Test module with a custom filename: python main_script.py test --filename custom_data.json
+    - Stream data: python kafka_stream.py stream
+    - Export data to a custom filename: python kafka_stream.py export --filename custom_data.json
+    - Test module with a custom filename: python kafka_stream.py test --filename custom_data.json
     """
 
 
@@ -34,4 +34,4 @@ if __name__ == "__main__":
     elif args.mode == 'export':
         export_data_to_json(api_endpoint, _fields, filename=args.f)
     elif args.mode == 'test':
-        testing_module(producer, filename=args.f)
+        testing_module(create_producer(), filename=args.f)
