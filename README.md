@@ -582,9 +582,27 @@ Detailed reports of test results and coverage are uploaded as artifacts to GitHu
 
 These artifacts provide valuable insights into the project's testing status and code coverage metrics, aiding in monitoring and improving the overall quality of the codebase.
 
-## Final result 
-> [!NOTE]
-> You can access our project deployed in the Azure cloud. However, due to payment reasons, the VM is currently stopped.
+## Deployment to Azure
+
+If you have gotten all of the above to work locally, you are ready to migrate to a remote server. You can chose whatever cloud provider you like.
+
+Azure provides 100$ for students enrolled in a university, or through the Github Student Pack. 
+
+We chose to use Microsoft Azure for our project. In order to create a virtual machine on Azure:
+
+- **1-** Log into your Azure account.
+- **2-** Hit the *create virtual machine* button on the screen that appears.
+- **3-** This takes you to a different interface where you should hit the *Create* button.
+- **4-** This takes you to a third interface containing a form. Follow the instructions to choose the specifications of your machine
+- **5-** Once created, go over to *Network Configuration* and open up the HTTP, SSH, Prometheus and Grafana Ports on the firewall.
+- **6-** If you chose to access your machine through SSH, a key should have been downloaded to your machine (DO NOT LOSE IT).
+- **7-** SSH into your remote server and pull the repository you have created. The command should look something like this `ssh -i remote-machine_key.pem azureuser@public_ip_address`
+
+The image below showcases the machine that we opted to use for this solution:
+
+ ![Azure Server](./img/azure-machine.jpg) 
+
+ **!!** Chances are, the machine will have been brought down by the time you see this screenshot. That's why the IP@ won't work. 
 
 ## Dashboard Showcase
 Let us now focus on the graphs developed during the data visualization process. After consulting aviation experts and airport administrators, we have chosen to divide our dashboard into three sections: airport information, flight information, and aircraft information.
@@ -609,8 +627,51 @@ The filters can be found in the dashboard header as follows:
 ![Filters](img/cover-filters.png)
 
 
+## Improvements
 
-## Collaborators
+Oh, where to start? There are many opportunities to enhance this solution to ensure it meets production standards. Here are some initial areas for improvement:
+
+### Kafka Streaming
+
+- **Optimize Kafka Configurations**: Review Kafka configurations (e.g., `server.properties`) to ensure they are tuned for optimal performance based on your workload and resource constraints. Consider parameters like batch size, message compression, and replication factors.
+
+- **Monitoring and Alerting**: Implement robust monitoring for Kafka clusters using tools like Prometheus and Grafana. Set up alerts for critical metrics such as message lag, throughput, and partition health.
+
+- **Scaling Kafka Consumers**: Evaluate the scalability of Kafka consumers. Implement consumer groups effectively to handle varying loads and ensure timely message processing.
+
+- **Error Handling and Retry Mechanisms**: Enhance error handling and retry mechanisms within Kafka consumers and producers to handle transient failures gracefully and maintain data integrity.
+
+- **Testing Kafka Streams**: Expand testing strategies to include Kafka streams. Implement unit tests, integration tests, and end-to-end tests specifically for Kafka stream processing to validate data transformations and business logic.
+
+These improvements aim to optimize Kafka streaming performance, enhance reliability, and ensure scalability to meet the demands of production environments.
+
+### Security
+
+- **Implement Backups**: Ensure data integrity and disaster recovery by setting up automated backups. Consider using separate Docker containers to manage volumes and create copies.
+
+### Availability
+
+- **Version Control for Images**: Stabilize builds by avoiding mutable images (e.g., using specific versions like `mongo:4.4.0-bionic` instead of `latest`).
+
+- **Persistent Storage Solutions**: Replace Docker named volumes with more persistent solutions, such as cloud storage drivers.
+
+### Operational Efficiency
+
+- **Improved Image Tagging**: Enhance image tagging practices by incorporating project names and versioning to better manage and track Docker images.
+
+### Testing
+
+- **Enhance Test Coverage**: Increase test coverage with a focus on unit tests, integration tests, and end-to-end tests. Use code coverage metrics to guide minimum test requirements.
+
+- **Expand Test Types**: Introduce additional testing types such as stress tests, fuzz tests, and soak tests to ensure robustness under various conditions.
+
+### Performance Optimization
+
+- **Pipeline Optimization**: Address bottlenecks in pipeline execution, particularly for concurrent unit test runs and overall pipeline duration.
+
+- **Reduce Pipeline Runtime**: Optimize pipeline processes to achieve faster execution times, aiming for completion within five minutes or less.
+
+## Project by
 <a href="https://https://github.com/EdamH/REAL-TIME-FLIGHT-DATA-CICD-PIPELINE/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=EdamH/REAL-TIME-FLIGHT-DATA-CICD-PIPELINE" />
 </a>
