@@ -602,7 +602,9 @@ The image below showcases the machine that we opted to use for this solution:
 
  ![Azure Server](./img/azure-machine.jpg) 
 
- **!!** Chances are, the machine will have been brought down by the time you see this screenshot. That's why the IP@ won't work. 
+> [!NOTE]
+> Chances are, the machine will have been brought down by the time you see this screenshot. That's why the IP@ won't work. 
+
 
 ## Dashboard Showcase
 Let us now focus on the graphs developed during the data visualization process. After consulting aviation experts and airport administrators, we have chosen to divide our dashboard into three sections: airport information, flight information, and aircraft information.
